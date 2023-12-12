@@ -8,27 +8,23 @@ int main()
     int array[BUFFER_SIEZ] = {1, 1, 2, 3, 3, 4, 5};
     int len = BUFFER_SIEZ;
     /*循环 让后一个与前一个进行比较 */
-    for (int idx = 1; idx < len; idx++)   
+    for (int idx = 1; idx < len; idx++)
     {
 
         if (array[idx - 1] == array[idx])
         {
             targent++;
-            len--;
-            /*从idx的位置开始往后移*/
-            for (int sub = idx; sub < len; sub++)
-            {
-                /*删除重复的 让后一个的值赋给前一个*/
-                array[sub] = array[sub + 1];
-            }
         }
+
+        /* 根据重复出现的次数 来判断后面的数往前的位次*/
+        array[idx - targent] = array[idx];
     }
+
+    len -= targent;
 
     for (int idx = 0; idx < len; idx++)
     {
         printf("%d\n", array[idx]);
     }
     return 0;
-
-    
 }
