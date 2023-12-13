@@ -3,6 +3,7 @@
 int myStrlen(const char *ptr)
 {
     int count = 0;
+    // if (ptr == NULL)
     if (!ptr)
     {
         return count;
@@ -39,21 +40,20 @@ char *myStrcat(char *dest, const char *src)
     }
     return ptrs;
 }
-    /*strcmp*/
-    int myStrcmp(const char *ptr1, const char *ptr2)
+/*strcmp*/
+int myStrcmp(const char *ptr1, const char *ptr2)
+{
+    while (*ptr1 == *ptr2)
     {
-        while (*ptr1 == *ptr2)
-        {
-            *ptr1++;
-            *ptr2++;
-        }
-        if (*ptr1 > *ptr2)
-        {
-            return 1;
-        }
-        else
-        {
-            return -1;
-        }
-        
+        *ptr1++;
+        *ptr2++;
+    }
+    if (*ptr1 > *ptr2)
+    {
+        return 1;
+    }
+    else
+    {
+        return -1;
+    }
 }
