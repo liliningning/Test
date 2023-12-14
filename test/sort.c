@@ -1,4 +1,4 @@
-/* 输入一个乱序的数组 然后将其进行递增排序后输出*/
+/* 输入一个乱序的数组 然后将其进行递增排序后输出   冒泡排序*/ 
 
 #include <stdio.h>
 #include <string.h>
@@ -9,7 +9,7 @@
 
 int main()
 {
-#if 0
+#if 1
     /*前后交换中间值*/
     int num = 0;
     int array[BUFFER_SIEZ] = {1, 4, 3, 2, 5, 6};
