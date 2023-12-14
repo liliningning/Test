@@ -5,7 +5,6 @@
 #include <stdlib.h>
 
 #define BUFFER_SIEZ 5
-#define BUFFER_SIEZ1 6
 
 #if 0
 int bubbleSort(int *num1,int *BUFFER_SIEZ)
@@ -104,8 +103,8 @@ int *mer_strcat(int *num1, int *num2, int num1size, int num2size, int *num3size)
 int main()
 {
 #if 1
-    int num1[5] = {2, 3, 4, 5, 6};
-    int num2[5] = {1, 1, 7, 8, 9};
+    int num1[BUFFER_SIEZ] = {2, 3, 4, 5, 6};
+    int num2[BUFFER_SIEZ] = {1, 1, 7, 8, 9};
     int num3size = (sizeof(num1) / 4) + (sizeof(num2) / 4);
     int *array = mer_strcat(num1, num2, sizeof(num1) / 4, sizeof(num2) / 4, &num3size);
 #endif

@@ -9,7 +9,7 @@
 
 int main()
 {
-#if 1
+#if 0
     /*前后交换中间值*/
     int num = 0;
     int array[BUFFER_SIEZ] = {1, 4, 3, 2, 5, 6};
@@ -37,7 +37,7 @@ int main()
 
 #endif
 
-#if 0
+#if 1
 
     int num = 0;
     int len;
