@@ -6,7 +6,7 @@ int main()
 
 { /*出现的次数*/
 
-#if 0
+#if 1
     int targent = 0;
     int array[BUFFER_SIEZ] = {1, 1, 2, 3, 3, 4, 5};
     int len = BUFFER_SIEZ;
