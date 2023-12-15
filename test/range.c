@@ -7,32 +7,62 @@
 #define BUFFER_SIEZE 7
 #define BUFFER_SIEZE1 30
 
+#if 0
+int getMax(int * newary,int newarysize )
+{  
+    int max = newary[0];
+    for(int idx = 0 ;idx < newarysize; idx++ )
+  {
+    if(max < newary[idx])
+    {
+        max = newary[idx];
+    }
+  }
+
+    return max;
+}
+
+#endif
+
 int main()
 {
 
     int array[BUFFER_SIEZE] = {7,1,3,5,6,4,2};
-    int new[BUFFER_SIEZE1] = { 0 };
+    int newary[BUFFER_SIEZE1] = { 0 };
     // int *ptr = NULL;
-    int jdx=0;
-    // memset(ptr, 0, sizeof(array)*3);
-
+    // int jdx=0;
+    int temp = 0;
+    int num1 = 0;
+    int num2 = 0;
     for(int idx = 0; idx < BUFFER_SIEZE - 1;idx++)
     {
         for(int sell = idx+1; sell < BUFFER_SIEZE; sell++ )
         {
-            new[kdx] = (array[sell] - array[idx]);
-            jdx++;
+            /*判断最大值 并且将最大值 和 买的卖的天数输出*/
+            if(temp  < (array[sell] - array[idx]))
+            {
+                temp = (array[sell] - array[idx]);
+
+                num1 = sell + 1;
+                num2 = idx + 1;
+            }
+
+            // newary[jdx] = (array[sell] - array[idx]);
+            // jdx++;
         }
     }
-    for(int idx =0; idx < BUFFER_SIEZE1; idx++)
-    {
-         printf("%d\n",new[idx]);
 
-    }
+    // for(int idx =0; idx < BUFFER_SIEZE1; idx++)
+    // {
+    //      printf("%d\n",newary[idx]);
+
+
+    // }
    
+//    int max = getMax(newary,BUFFER_SIEZE1);
+//    printf("max: %d\n",max);
 
-
-
+printf("卖的天%d\t买的天%d\t, 最大的利润：%d\n",num1,num2,temp);
 
 
     return 0;
