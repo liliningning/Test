@@ -7,7 +7,7 @@
 typedef struct linkNode
 {
     ELEMENTTYPDE data;
-    linkNode *next;
+    struct  linkNode *next;
 
 } linkNode;
 
@@ -23,10 +23,10 @@ typedef struct linkList
 int linkListInit(linkList **pList);
 
 // 链表的头插
-int linkListHeadInit(linkList *pList, int val);
+int linkListHeadInit(linkList *pList, ELEMENTTYPDE val);
 
 // 链表的尾插
-int linkListTailInit(linkList *pList, int val);
+int linkListTailInit(linkList *pList,ELEMENTTYPDE val );
 
 // 链表的指定位置插入
 int linkListPositionInit(linkList *pList, int pos, ELEMENTTYPDE val);
@@ -35,7 +35,7 @@ int linkListPositionInit(linkList *pList, int pos, ELEMENTTYPDE val);
 int linkListPositionDel(linkList *pList, int pos);
 
 // 链表的指定数据删除
-int linkListPositionDataDel(linkList *pList, int pos, ELEMENTTYPDE val);
+int linkListPositionDataDel(linkList *pList, ELEMENTTYPDE val);
 
 // 链表的头删
 int linkListHeadPositionDel(linkList *pList);
