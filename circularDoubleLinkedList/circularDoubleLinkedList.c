@@ -42,8 +42,11 @@ int CircularDoubleLinkListInit(CircularDoubleLinkList **pList)
     // 清楚脏数据
     memset(list->head, 0, sizeof(CircularDoubleLinkNode) * 1);
     list->head->data = 0;
-    // 前指针为null
-    list->head->prev = NULL;
+
+    list->head->prev =list->head;
+
+    list->head->next = list->head;
+
 
     // 初始化时尾指针等于头指针
     list->tail = list->head;
@@ -186,16 +189,25 @@ int CircularDoubleLinkListAppintPosDel(CircularDoubleLinkList *pList, int pos)
     }
     CircularDoubleLinkNode *trvaelNode = pList->head;
     CircularDoubleLinkNode *needNode = NULL;
-
-
-
-    
-    if (pos == pList->len)
+    /*删除第一个结点*/
+    if(pos == 1)
+    {
+        needNode = trvaelNode->next;
+        needNode->next->prev = pList->tail;
+        pList->tail = needNode->next;
+        trvaelNode->next = needNode->next;
+        trvaelNode = needNode->next->prev;
+    }
+    /*删除最后一个结点*/
+   else if (pos == pList->len)
     {
         CircularDoubleLinkNode *temNode = pList->tail;
         pList->tail = pList->tail->prev;
+        pList->tail->next = trvaelNode;
+        trvaelNode->prev = pList->tail;
         needNode = temNode;
     }
+    /*删除指定位置的结点*/
     else
     {
         while (--pos)
@@ -204,12 +216,12 @@ int CircularDoubleLinkListAppintPosDel(CircularDoubleLinkList *pList, int pos)
             trvaelNode = trvaelNode->next;
             // pos--;
         }
-
         // needNode 需要删除的结点
-        needNode = trvaelNode->next;
+         needNode = trvaelNode->next; 
         trvaelNode->next = needNode->next;
         trvaelNode = needNode->next->prev;
     }
+    
     // 释放内存
     if (needNode != NULL)
     {
@@ -287,20 +299,22 @@ int CircularDoubleLinkListGetLength(CircularDoubleLinkList *pList, int *pSize)
 // 链表的销毁
 int CircularDoubleLinkListDestroy(CircularDoubleLinkList *pList)
 { // 使用头删 释放链表
-    int size = 0;
-    while (CircularDoubleLinkListGetLength(pList, &size))
-    {
-        CircularDoubleLinkListHeadDel(pList);
-    }
-
     if (pList->head != NULL)
     {
         free(pList->head);
         pList->head = NULL;
         pList->tail = NULL;
     }
+
+    if(pList != NULL)
+    {
+        free(pList);
+        pList = NULL;
+    }
+    return  ON_SUCCESS;
 }
 
+#if 0
 // 链表的遍历
 int linkedListForeach(CircularDoubleLinkList *pList, int (*printFunc)(ELEMENTTPYE))
 // int linkedListForeach(CircularDoubleLinkList *pList)
@@ -342,7 +356,7 @@ int linkedListForeach(CircularDoubleLinkList *pList, int (*printFunc)(ELEMENTTPY
 #endif
     return ret;
 }
-
+#endif 
 // 逆序打印
 int CircularDoubleLinkListReverForeach(CircularDoubleLinkList *pList, int (*printFunc)(ELEMENTTPYE))
 {
