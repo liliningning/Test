@@ -67,12 +67,13 @@ typedef struct CircularDoubleLinkList
     int CircularDoubleLinkListDestroy(CircularDoubleLinkList * pList);
 
 //链表的遍历 回调函数
-    int linkedListForeach(CircularDoubleLinkList * pList, int(*printFunc)(ELEMENTTPYE));
+    int CircularDoubleLinkListForeach(CircularDoubleLinkList * pList, int(*printFunc)(ELEMENTTPYE));
     
     //链表的遍历 int
     // int linkedListForeach(CircularDoubleLinkList * pList);
 
 //逆序打印 
-    int CircularDoubleLinkListReverForeach(CircularDoubleLinkList *pList, int(*printFunc)(ELEMENTTPYE));
+    // int CircularDoubleLinkListReverForeach(CircularDoubleLinkList *pList, int(*printFunc)(ELEMENTTPYE));
+    
 
 #endif

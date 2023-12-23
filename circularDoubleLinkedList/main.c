@@ -39,9 +39,9 @@ int printfBasicData(void *arg)
 int main()
 {
 
-    DoubleLinkList *list = NULL;
+    CircularDoubleLinkList *list = NULL;
     // 初始化链表
-    DoubleLinkListInit(&list);
+    CircularDoubleLinkListInit(&list);
     // int buffer[BUFFER_SIZE] = {1, 2, 3};
 #if 0
 
@@ -101,23 +101,23 @@ int main()
     stuInfo buffer[BUFFER_SIZE] = {stu1, stu2, stu3};
     for (int idx = 0; idx < BUFFER_SIZE; idx++)
     {
-        DoubleLinkListHeadInsert(list, (void *)&buffer[idx]);
+        CircularDoubleLinkListHeadInsert(list, (void *)&buffer[idx]);
         // DoubleLinkListTailInsert(list,(void *)&buffer[idx]);
     }
 
-    //尾删
-    DoubleLinkListTailDel(list);
+    // //尾删
+    // DoubleLinkListTailDel(list);
 
-    //指定数据删除
-    DoubleLinkListDelAppointData (list, (void *)&buffer[1] , comparFunc);
+    // //指定数据删除
+    // DoubleLinkListDelAppointData (list, (void *)&buffer[1] , comparFunc);
 
     //获取长度
     int size = 0;
-    DoubleLinkListGetLength(list, &size);
+    CircularDoubleLinkListGetLength(list, &size);
     printf("size %d\n", size);
 
     //逆序遍历
-    DoubleLinkListReverForeach(list, printfStruct);
+    CircularDoubleLinkListForeach(list, printfStruct);
 
 #endif
 

@@ -44,10 +44,9 @@ int CircularDoubleLinkListInit(CircularDoubleLinkList **pList)
     memset(list->head, 0, sizeof(CircularDoubleLinkNode) * 1);
     list->head->data = 0;
 
-    list->head->prev =list->head;
+    list->head->prev = list->head;
 
     list->head->next = list->head;
-
 
     // 初始化时尾指针等于头指针
     list->tail = list->head;
@@ -122,21 +121,14 @@ int CircularDoubleLinkListAppointPosInsert(CircularDoubleLinkList *pList, int po
     CircularDoubleNode *travelNode = pList->head->next;
 #endif
     int flag = 0;
-    /* 在头结点后面插入 头插*/
-    if (pos == 0)
-    {
-        pList->tail->next = newNode;
-        newNode->prev = pList->tail;
-        newNode->next = travelNode->next;
-        travelNode->next->prev = newNode;
-    }
+
     /*尾插 */
-    else if (pos == pList->len)
+    if (pos == pList->len)
     {
 
         travelNode = pList->tail;
         newNode = pList->head->prev;
-        newNode->next = pList->head->next;
+        newNode->next = pList->head;
         flag = 1;
     }
 
@@ -190,17 +182,8 @@ int CircularDoubleLinkListAppintPosDel(CircularDoubleLinkList *pList, int pos)
     }
     CircularDoubleLinkNode *trvaelNode = pList->head;
     CircularDoubleLinkNode *needNode = NULL;
-    /*删除第一个结点*/
-    if(pos == 1)
-    {
-        needNode = trvaelNode->next;
-        needNode->next->prev = pList->tail;
-        pList->tail = needNode->next;
-        trvaelNode->next = needNode->next;
-        trvaelNode = needNode->next->prev;
-    }
     /*删除最后一个结点*/
-   else if (pos == pList->len)
+    if (pos == pList->len)
     {
         CircularDoubleLinkNode *temNode = pList->tail;
         pList->tail = pList->tail->prev;
@@ -218,11 +201,11 @@ int CircularDoubleLinkListAppintPosDel(CircularDoubleLinkList *pList, int pos)
             // pos--;
         }
         // needNode 需要删除的结点
-         needNode = trvaelNode->next; 
+        needNode = trvaelNode->next;
         trvaelNode->next = needNode->next;
         trvaelNode = needNode->next->prev;
     }
-    
+
     // 释放内存
     if (needNode != NULL)
     {
@@ -307,17 +290,17 @@ int CircularDoubleLinkListDestroy(CircularDoubleLinkList *pList)
         pList->tail = NULL;
     }
 
-    if(pList != NULL)
+    if (pList != NULL)
     {
         free(pList);
         pList = NULL;
     }
-    return  ON_SUCCESS;
+    return ON_SUCCESS;
 }
 
-#if 0
+#if 1
 // 链表的遍历
-int linkedListForeach(CircularDoubleLinkList *pList, int (*printFunc)(ELEMENTTPYE))
+int CircularDoubleLinkListForeach(CircularDoubleLinkList *pList, int (*printFunc)(ELEMENTTPYE))
 // int linkedListForeach(CircularDoubleLinkList *pList)
 {
     int ret = 0;
@@ -338,26 +321,27 @@ int linkedListForeach(CircularDoubleLinkList *pList, int (*printFunc)(ELEMENTTPY
 #else
 
     // 从头结点开始
-    CircularDoubleLinkNode *travelNode = pList->head;
+    // CircularDoubleLinkNode *travelNode = pList->head;
 
     // 从链表第一个结点开始（travelNode 指向第一个结点）
-    // CircularDoubleNode *travelNode = pList->head->next;
-    while (travelNode->next != NULL)
+    CircularDoubleLinkNode *travelNode = pList->head->next;
+    while (travelNode != pList->head)
     {
-        travelNode = travelNode->next;
+
 #if 0
         printf("travelNode->data %d\n", travelNode->data);
         // travelNode = travelNode->next;
 #else
-        // 包装器 回调函数
-        //  调用这个函数
+        
         printFunc(travelNode->data);
+        travelNode = travelNode->next;
 #endif
     }
 #endif
     return ret;
 }
-#endif 
+#endif
+#if 0
 // 逆序打印
 int CircularDoubleLinkListReverForeach(CircularDoubleLinkList *pList, int (*printFunc)(ELEMENTTPYE))
 {
@@ -372,6 +356,4 @@ int CircularDoubleLinkListReverForeach(CircularDoubleLinkList *pList, int (*prin
 
     return ON_SUCCESS;
 }
-
-
-
+#endif
