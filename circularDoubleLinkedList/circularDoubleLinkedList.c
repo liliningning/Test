@@ -11,6 +11,7 @@ enum STATUS_CODE
     NULL_PTR,
     MALLOC_ERROR,
     INVALID_ACCESS,
+    MALLOC_SUCCESS,
 
 };
 
@@ -371,3 +372,6 @@ int CircularDoubleLinkListReverForeach(CircularDoubleLinkList *pList, int (*prin
 
     return ON_SUCCESS;
 }
+
+
+
