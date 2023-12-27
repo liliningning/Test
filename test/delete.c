@@ -4,14 +4,15 @@
 
 int main()
 
-{ /*出现的次数*/
+{ 
 
 #if 1
+    /*出现的次数*/
     int targent = 0;
-    int array[BUFFER_SIEZ] = {1, 1, 2, 3, 3, 4, 5};
+    int array[BUFFER_SIEZ] = {1, 1, 2, 3, 3, 5, 5};
     int len = BUFFER_SIEZ;
     /*循环 让后一个与前一个进行比较 */
-    for (int idx = 1; idx < len; idx++)
+    for (int idx = 1; idx < len ; idx++)
     {
 
         if (array[idx - 1] == array[idx])

@@ -10,18 +10,18 @@ int main()
 {
     int array[ROW][COLUMN] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     int num = 0;
-    // int count = 0;
+    int count = 0;
     /*打印原来的数组*/
     for (int row = 0; row < ROW; row++)
     {
         for (int col = 0; col < COLUMN; col++)
         {
             printf("array[%d][%d]%d\n", row, col, array[row][col]);
-            // count++;
-            // if (count % 3 == 0)
-            // {
-            //     printf("\n");
-            // }
+            count++;
+            if (count % 3 == 0)
+            {
+                printf("\n");
+            }
         }
     }
 
@@ -41,11 +41,11 @@ int main()
         for (int col = 0; col < COLUMN; col++)
         {
             printf("array[%d][%d] %d\n", row, col, array[row][col]);
-            // count++;
-            // if (count % 3 == 0)
-            // {
-            //     printf("\n");
-            // }
+            count++;
+            if (count % 3 == 0)
+            {
+                printf("\n");
+            }
         }
     }
 

@@ -42,18 +42,18 @@ char *myStrcat(char *dest, const char *src)
 
     
     // if (ptr == NULL)
-    if (!dest || !src)
-    {
-        return 0;
-    }
+    // if (!dest || !src)
+    // {
+    //     return 0;
+    // }
     char *ptrs = dest;
     while (*dest)
     {
         dest++;
     }
-    // while (*dest++ = *src++)
-    // {
-    // }
+    while (*dest++ = *src++)
+    {
+    }
     return ptrs;
 }
 /*strcmp*/

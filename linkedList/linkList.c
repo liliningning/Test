@@ -3,6 +3,9 @@
 #include <string.h>
 #include <stdlib.h>
 
+
+
+//int 型
 // 状态码
 enum STATUS_CODE
 {
@@ -116,8 +119,10 @@ static int getAppointPos(linkList *pList, int *pPos, ELEMENTTYPDE val)
 {
     int pos = 0;
     linkNode *trvalNode = pList->head;
+
     while (trvalNode->next != NULL)
     {
+        //头结点的下一个结点的值进行判断
        if (trvalNode->next->data == val)
         {
             pos++;
@@ -220,6 +225,7 @@ int linkListGetDate(linkList *pList)
     {
         return NULL_PTR;
     }
+
     linkNode *trvalNode = pList->head;
     while (trvalNode->next != NULL)
     {

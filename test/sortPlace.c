@@ -4,11 +4,11 @@
 #include <time.h>
 #include <stdlib.h>
 
-// #define BUFFER_SIEZ 10
+#define BUFFER_SIEZ 10 
 
 int main()
 {
-#if 0
+#if 1
     /*与targent相同的次数*/
     int num = 0;
     int len = BUFFER_SIEZ;

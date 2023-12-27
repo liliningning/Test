@@ -44,12 +44,10 @@ int CircularDoubleLinkListInit(CircularDoubleLinkList **pList)
     memset(list->head, 0, sizeof(CircularDoubleLinkNode) * 1);
     list->head->data = 0;
 
-    list->head->prev = list->head;
-
-    list->head->next = list->head;
-
     // 初始化时尾指针等于头指针
-    list->tail = list->head;
+    list->head = list->tail;
+    list->head->next = list->head;
+    list->head->prev = list->head;
 
     // 链表长度为0
     list->len = 0;
@@ -120,16 +118,16 @@ int CircularDoubleLinkListAppointPosInsert(CircularDoubleLinkList *pList, int po
 #else
     CircularDoubleNode *travelNode = pList->head->next;
 #endif
-    int flag = 0;
 
     /*尾插 */
-    if (pos == pList->len)
+    if (pos == pList->len && pos != 0)
     {
-
+        pList->tail = pList->head->prev;
         travelNode = pList->tail;
-        newNode = pList->head->prev;
+        travelNode->next = newNode;
+        newNode->prev = travelNode;
         newNode->next = pList->head;
-        flag = 1;
+        pList->head->prev = newNode;
     }
 
     else
@@ -141,16 +139,10 @@ int CircularDoubleLinkListAppointPosInsert(CircularDoubleLinkList *pList, int po
         }
         travelNode->next->prev = newNode;
         newNode->next = travelNode->next;
+        newNode->prev = travelNode;
+        travelNode->next = newNode;
     }
 
-    newNode->prev = travelNode;
-    travelNode->next = newNode;
-
-    if (flag == 1)
-    {
-
-        pList->tail = newNode;
-    }
     // 更新链表长度
     (pList->len)++;
     return ret;
@@ -187,8 +179,8 @@ int CircularDoubleLinkListAppintPosDel(CircularDoubleLinkList *pList, int pos)
     {
         CircularDoubleLinkNode *temNode = pList->tail;
         pList->tail = pList->tail->prev;
-        pList->tail->next = trvaelNode;
-        trvaelNode->prev = pList->tail;
+        pList->tail->next = pList->head;
+        pList->head->prev = pList->tail;
         needNode = temNode;
     }
     /*删除指定位置的结点*/
@@ -332,7 +324,7 @@ int CircularDoubleLinkListForeach(CircularDoubleLinkList *pList, int (*printFunc
         printf("travelNode->data %d\n", travelNode->data);
         // travelNode = travelNode->next;
 #else
-        
+
         printFunc(travelNode->data);
         travelNode = travelNode->next;
 #endif

@@ -26,7 +26,7 @@ void reverse1(char *newary)
 #endif
 
 /*将字符串倒转*/
-#if 0
+#if 1
 void reverse(char *newary, int start, int end)
 {
     // int len = strlen(newary);   //求定义数组的长度
@@ -94,8 +94,8 @@ int main()
     {
         if(array[end] == '\0' || array[end] == ' ')
         {
-            // reverse(array,start,end);
-            reverse1(array);
+            reverse(array,start,end);
+            // reverse1(array);
             start = end + 1; 
         }
     }

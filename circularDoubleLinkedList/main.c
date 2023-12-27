@@ -2,7 +2,7 @@
 #include "circularDoubleLinkedList.h"
 #include <string.h>
 
-#define BUFFER_SIZE 3
+#define BUFFER_SIZE 5
 
 #define DEFAULT_SIZE 3
 
@@ -42,7 +42,7 @@ int main()
     CircularDoubleLinkList *list = NULL;
     // 初始化链表
     CircularDoubleLinkListInit(&list);
-    // int buffer[BUFFER_SIZE] = {1, 2, 3};
+    int buffer[BUFFER_SIZE] = {1, 2, 3,4,5};
 #if 0
 
     for (int idx = 0; idx < BUFFER_SIZE; idx++)
@@ -98,15 +98,16 @@ int main()
     stu3.age = 30;
     stu3.sex = 'm';
 
-    stuInfo buffer[BUFFER_SIZE] = {stu1, stu2, stu3};
+    // stuInfo buffer[BUFFER_SIZE] = {stu1, stu2, stu3};
     for (int idx = 0; idx < BUFFER_SIZE; idx++)
     {
-        CircularDoubleLinkListHeadInsert(list, (void *)&buffer[idx]);
+        // CircularDoubleLinkListHeadInsert(list, (void *)&buffer[idx]);
+        CircularDoubleLinkListTailInsert(list, (void *)&buffer[idx]);
         // DoubleLinkListTailInsert(list,(void *)&buffer[idx]);
     }
 
     // //尾删
-    // DoubleLinkListTailDel(list);
+    // CircularDoubleLinkListTailDel(list);
 
     // //指定数据删除
     // DoubleLinkListDelAppointData (list, (void *)&buffer[1] , comparFunc);
@@ -116,7 +117,7 @@ int main()
     CircularDoubleLinkListGetLength(list, &size);
     printf("size %d\n", size);
 
-    //逆序遍历
+    //遍历
     CircularDoubleLinkListForeach(list, printfStruct);
 
 #endif

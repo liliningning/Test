@@ -2,12 +2,12 @@
 #include <string.h>
 int main()
 {
-    /*数组的长度*/
-    int len;
+
+    int len;               // 数组的长度
     printf("数组的长度：");
     scanf("%d", &len);
-    /* 逆序后的数组*/
-    char invert[len];
+    char invert[len];      // 逆序后的数组
+
     /*消除标准输入缓冲区*/
     getc(stdin);
     /*初始的数组*/
@@ -15,6 +15,23 @@ int main()
     printf("array:");
     fgets(array, len, stdin);
     /*遇见空格的次数*/
+
+for(int idx = 0 ; idx < len; idx++)
+{
+
+    if('A' < array[idx] < 'Z')
+    {
+        array[idx] = array[idx] + 32;
+        idx++;
+    }
+    else
+    {
+        invert[idx] = array[idx];
+        idx++;
+    }
+    
+}
+
     int num = 0;
     for (int jdx = 0; jdx < len; jdx++)
     {
@@ -37,6 +54,21 @@ int main()
         invert[idx] = array[len - idx - 1];
         // printf("%c\t",array[len - idx -1]);
     }
+
+    for (int idx = 0; idx < len; idx++)
+    {
+
+        {
+
+            printf("invert是回文串");
+        }
+        else
+        {
+            printf("invert不是回文串");
+            break;
+        }
+    }
+
     printf("%s", invert);
     printf("\n");
     return 0;

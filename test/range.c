@@ -1,4 +1,4 @@
-/* 买卖 求怎么获取最大的利润  就相当于用最大的值减去最小的值*/
+/* 买卖 求怎么获取最大的利润  就相当于用最大的值减去最小的值 并求出是在那天买  那天卖 */
 
 #include <stdio.h>
 #include <string.h>
@@ -37,10 +37,11 @@ int main()
     {
         for(int sell = idx+1; sell < BUFFER_SIEZE; sell++ )
         {
-            /*判断最大值 并且将最大值 和 买的卖的天数输出*/
+            /*判断最大值 并且将最大值 和 买的卖的天数输出  卖的减去买的 */
             if(temp  < (array[sell] - array[idx]))
             {
                 temp = (array[sell] - array[idx]);
+                /* 避免输出0天 */
                 num1 = sell + 1;
                 num2 = idx + 1;
             }

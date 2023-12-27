@@ -11,6 +11,7 @@ typedef struct linkNode
 
 } linkNode;
 
+//定义链表
 typedef struct linkList
 {
     int len;

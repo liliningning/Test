@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#define BUFFER_SIEZ 20
-#define BUFFER_SIEZ1 10
+#define BUFFER_SIEZ 6
+#define BUFFER_SIEZ1 7
 
 int main()
 {
@@ -22,7 +22,7 @@ int main()
     printf("%s\n", num1);
 #endif
 
-#if 1
+#if 0
     myStrcat(num1, num2);
     printf("%s\n", num1);
 #endif
@@ -31,5 +31,12 @@ int main()
     int ret = myStrcmp(num2, num3);
     printf("ret %d\n", ret);
 #endif
+
+
+
+
+
+
+
     return 0;
 }

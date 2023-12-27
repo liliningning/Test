@@ -214,7 +214,7 @@ int dynamicArrayDeleteAppointPosData(dynamicArray *pArray, int pos)
         pArray->data[idx] = pArray->data[idx + 1];
     }
     //更新大小
-    pArray->len--;
+    (pArray->len)--;
     return ON_SUCCESS;
 }
 
